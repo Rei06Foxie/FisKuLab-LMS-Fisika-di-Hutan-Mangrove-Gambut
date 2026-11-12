@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FisKuLab LMS · Fisika di Hutan Mangrove Gambut</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#073b4c;--card:#ffffffea;--card2:#fff4d6;--teal:#06a3a0;--coral:#ff6f59;--sun:#ffc43d;--lime:#8fd14f;--line:#0a7c8c33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#e6fbff;--card:#06303eea;--card2:#0d4a55;--line:#8be0e533}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:500 16px/1.6 Nunito,system-ui,sans-serif;color:var(--ink);background:#0a6577}
+h1,h2,h3,.bk{font-family:"Baloo 2",system-ui,sans-serif;line-height:1.1;margin:0}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1}
+#bg .sun{animation:pul 5s ease-in-out infinite;transform-origin:900px 170px}
+#bg .cl{animation:drift 60s linear infinite}#bg .cl2{animation-duration:90s;animation-delay:-30s}
+#bg .wv{animation:sway 7s ease-in-out infinite alternate}#bg .wv2{animation-duration:9s;animation-direction:alternate-reverse}
+#bg .ff{animation:fire 4s ease-in-out infinite}#bg .fish{animation:swim 22s linear infinite}
+@keyframes pul{50%{transform:scale(1.08)}}@keyframes drift{from{transform:translateX(-300px)}to{transform:translateX(1500px)}}
+@keyframes sway{to{transform:translateX(-60px)}}@keyframes fire{0%,100%{opacity:0;transform:translateY(0)}50%{opacity:1;transform:translateY(-26px)}}
+@keyframes swim{from{transform:translateX(-120px)}to{transform:translateX(1320px)}}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 16px;background:#063b4acc;backdrop-filter:blur(10px);color:#fff}
+.logo{font:800 1.4rem "Baloo 2",sans-serif}.logo i{font-style:normal;color:var(--sun)}
+.pill{background:#ffffff26;border-radius:99px;padding:5px 14px;font-weight:700;font-size:.88rem;white-space:nowrap}
+button{font:inherit;cursor:pointer}
+.mus{border:0;border-radius:99px;padding:8px 14px;background:var(--sun);color:#073b4c;font-weight:800}
+.mus.on{background:var(--lime)}
+.shell{max-width:1120px;margin:16px auto;padding:0 14px;display:grid;grid-template-columns:200px 1fr;gap:16px}
+nav{position:sticky;top:70px;align-self:start;display:grid;gap:8px;max-height:calc(100vh - 90px);overflow-y:auto}
+nav button{border:0;text-align:left;padding:12px 14px;border-radius:18px;background:var(--card);color:var(--ink);font-weight:800;box-shadow:0 4px 0 #0a7c8c33;transition:.2s}
+nav button.on{background:var(--coral);color:#fff;transform:translateX(6px)}
+nav button b{float:right;color:var(--teal)}
+.panel{display:none;animation:pop .45s}.panel.on{display:block}@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.card{background:var(--card);border-radius:26px;padding:22px;margin-bottom:16px;box-shadow:0 10px 30px #04303a33;border:2px solid var(--line)}
+.hero{background:linear-gradient(135deg,#ffd16655,var(--card) 60%);position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.1rem,6vw,3.7rem);font-weight:800;margin-bottom:10px}
+.hero h1 span{display:inline-block;animation:bob 2.4s ease-in-out infinite}.hero h1 span:nth-child(2n){animation-delay:-1s;color:var(--coral)}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-2deg)}}
+.btn{border:0;border-radius:16px;padding:12px 20px;background:var(--coral);color:#fff;font-weight:800;box-shadow:0 5px 0 #b8402e}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #b8402e}.btn.g{background:var(--teal);box-shadow:0 5px 0 #047a78}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.mis{display:flex;gap:10px;align-items:center;background:var(--card2);border-radius:16px;padding:12px;font-weight:700}
+.mis.ok{background:#b9f08a;color:#073b4c}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{border:2px solid var(--teal);background:transparent;color:var(--ink);border-radius:99px;padding:7px 14px;font-weight:800}
+.tabs button.on{background:var(--teal);color:#fff}
+.fig{border-radius:20px;min-height:170px;display:grid;place-items:center;font-size:4.6rem;background:linear-gradient(160deg,#7fe0d0,#2aa6a0 55%,#7a5a3e);animation:hue 8s ease-in-out infinite alternate}
+.fig span{animation:bob 3s ease-in-out infinite}@keyframes hue{to{filter:hue-rotate(35deg)}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.fm{background:var(--card2);border-left:6px solid var(--sun);border-radius:10px;padding:10px 14px;font:800 1.15rem "Baloo 2",sans-serif;margin:10px 0}
+.tag{background:var(--lime);color:#073b4c;border-radius:99px;padding:3px 12px;font-weight:800;font-size:.8rem}
+.ask{background:#ff6f5922;border-radius:14px;padding:10px 14px;margin-top:10px}
+input[type=range],select,input[type=text]{width:100%;accent-color:var(--coral);font:inherit}
+input[type=text],select{padding:12px;border-radius:12px;border:2px solid var(--teal);background:#fff;color:#073b4c}
+.out{background:#073b4c;color:#fff;border-radius:14px;padding:10px 14px;font-weight:800;margin-top:8px}
+svg.sim{width:100%;height:auto;background:#d6f6f0;border-radius:16px}
+canvas{width:100%;border-radius:16px;background:linear-gradient(#bdf0ff,#4fc3d9)}
+.vid{position:relative;border-radius:20px;overflow:hidden;background:#073b4c}
+.vid svg{display:block;width:100%}.vid g.sc{opacity:0;transition:opacity .8s}.vid g.sc.on{opacity:1}
+.cap{padding:12px 16px;color:#fff;font-weight:700;min-height:70px}
+.bar{height:8px;background:#ffffff33}.bar i{display:block;height:100%;width:0;background:var(--sun);transition:width .4s}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border-radius:14px;border:2px solid var(--line);background:var(--card2);color:var(--ink);font-weight:700}
+.opt:hover{border-color:var(--teal)}.opt.ok{background:#b9f08a;color:#073b4c;border-color:#5aa51f}.opt.no{background:#ffb4a6;color:#4a0f05;border-color:var(--coral)}
+.score{font:800 5.5rem "Baloo 2",sans-serif;color:var(--coral);line-height:1}
+#gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:16px;background:#063b4acc;backdrop-filter:blur(6px)}
+#gate .card{max-width:430px;text-align:center}
+@media(max-width:780px){.shell{grid-template-columns:1fr}nav{position:fixed;bottom:0;left:0;right:0;top:auto;z-index:6;grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto;max-height:none;gap:4px;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));background:#063b4af2}
+nav button{padding:8px 10px;white-space:nowrap;text-align:center;font-size:.72rem;border-radius:12px}nav button b{display:none}.cols{grid-template-columns:1fr}.shell{padding-bottom:80px}#who{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes fly{from{transform:translate(-80px,0)}to{transform:translate(1300px,-60px)}}@keyframes rip{0%{transform:scale(.3);opacity:.8}100%{transform:scale(1.6);opacity:0}}@keyframes shim{50%{opacity:.25;transform:scaleX(.7)}}@keyframes wave{50%{transform:rotate(25deg)}}
+#bg .ray{animation:spin 140s linear infinite;transform-origin:900px 170px}#bg .shm{animation:shim 3s ease-in-out infinite;transform-origin:900px 0}#bg .bd{animation:fly 30s linear infinite}#bg .rp{animation:rip 5s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.room{background:linear-gradient(#fbe9c6 0 58%,#c98b5a 58%);border-radius:24px;padding:14px;border:6px solid #8a5a35;box-shadow:inset 0 -20px 40px #0002}
+.front{display:grid;grid-template-columns:90px 1fr 110px;gap:12px;align-items:center;margin-bottom:14px}
+.win{height:80px;border-radius:10px;border:5px solid #fff;background:linear-gradient(#7fd3ea,#3fae8a);display:grid;place-items:center;font-size:1.8rem}
+.board{background:#1f5a4a;border:7px solid #b98a55;color:#fff;border-radius:8px;padding:10px;text-align:center;font:800 1.25rem "Baloo 2",sans-serif;min-height:84px}
+.board small{display:block;font:600 .8rem Nunito,sans-serif;opacity:.85}
+.teach{text-align:center;font-weight:800;color:#4a2f14;font-size:.85rem}.teach div{font-size:2.6rem;animation:bob 3s ease-in-out infinite}
+.desks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.desk{position:relative;border:0;border-radius:12px 12px 6px 6px;background:#e0a96d;box-shadow:0 5px 0 #a56f3c;padding:6px 2px;color:#4a2f14;font:800 .8rem Nunito,sans-serif;text-align:center}
+.desk .av{display:block;font-size:2rem}.desk.me{background:var(--sun);outline:3px solid var(--coral)}
+.desk .hd{display:none;position:absolute;top:-8px;right:4px;font-size:1.3rem;transform-origin:bottom;animation:wave .6s infinite}.desk.r .hd{display:block}
+.bub{background:var(--card2);border-radius:16px;padding:12px 16px;margin-top:12px;border-left:6px solid var(--coral);min-height:58px}
+.post{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.post .av{font-size:2rem}.post p{margin:2px 0}
+.lk textarea,.lk input.n{width:100%;font:inherit;border-radius:12px;border:2px solid var(--teal);padding:10px;background:#fff;color:#073b4c}.lk table{width:100%;border-collapse:collapse}.lk td,.lk th{padding:6px;border-bottom:1px solid var(--line);text-align:left}.lk input.n.ok{background:#b9f08a}.lk input.n.no{background:#ffb4a6}
+.lk h3{margin:18px 0 6px}
+@keyframes fx{from{transform:translateX(-300px)}to{transform:translateX(1520px)}}@keyframes fy{50%{transform:translateY(-16px)}}@keyframes wg{0%,100%{transform:rotate(16deg)}50%{transform:rotate(-72deg)}}@keyframes osc{50%{transform:rotate(6deg)}}
+#bg .fx{animation:fx linear infinite}#bg .fy{animation:fy ease-in-out infinite}#bg .wn,#bg .wf{animation:wg .75s ease-in-out infinite}#bg .sg{animation:pul 6s ease-in-out infinite;transform-origin:860px 395px}#bg .rz{animation:osc 12s ease-in-out infinite;transform-origin:860px 395px}
+.item{background:var(--card);border-radius:20px;padding:16px;margin-bottom:12px;border:2px solid var(--line);box-shadow:0 6px 18px #04303a22}.item h3{margin:6px 0}.item p{margin:4px 0}
+.fi{width:100%;margin:6px 0;padding:10px;border-radius:12px;border:2px solid var(--teal);background:#fff;color:#073b4c;font:inherit}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.stat{font:800 2.6rem "Baloo 2",sans-serif;color:var(--coral);line-height:1}
+nav .tg{display:none}body.guru nav .tg{display:block}
+</style></head><body>
+<svg id="bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+
+<div id="gate"><div class="card"><div style="font-size:3.4rem">🌿🦀🌊</div>
+<h1 style="font-size:2rem">Selamat datang di FisKuLab</h1>
+<p>Jelajahi fisika di hutan mangrove gambut. Ketik namamu, lalu mulai petualangan dengan musik.</p>
+<input type="text" id="nm" placeholder="Nama lengkap" maxlength="40" aria-label="Nama lengkap"><input type="text" id="gc" placeholder="Kelas (contoh: X IPA 1)" maxlength="20" aria-label="Kelas" style="margin-top:8px"><select id="gr" aria-label="Peran" style="margin-top:8px"><option value="siswa">Masuk sebagai Siswa</option><option value="guru">Masuk sebagai Guru</option></select>
+<p><button class="btn" id="go">Masuk kelas 🎶</button></p></div></div>
+
+<header><div class="logo">FisKu<i>Lab</i> <small style="font-size:.7rem;font-weight:600">LMS Mangrove</small></div>
+<div style="display:flex;gap:8px;align-items:center"><span class="pill" id="who"></span><span class="pill" id="xp">⭐ 0 XP</span><button class="mus" id="mus" aria-pressed="false">🎵 Musik</button></div></header>
+
+<div class="shell"><nav id="nav"></nav><main>
+<section class="panel on" id="home"><div class="card hero"><h1 id="hi"></h1>
+<p style="max-width:600px">Dari akar yang tegak di lumpur sampai gambut yang menyimpan air, semuanya punya rumus. Selesaikan lima misi, kumpulkan XP, lalu tantang kuis 15 soal dengan skor 1 sampai 100.</p>
+<button class="btn" onclick="go('materi')">Mulai belajar 🌱</button></div>
+<div class="grid"><div class="card"><div>Tugas tersedia</div><div class="stat" id="stA">0</div></div><div class="card"><div>Tugas terkumpul</div><div class="stat" id="stS">0</div></div><div class="card"><div>Tugas dinilai</div><div class="stat" id="stG">0</div></div></div>
+<div class="card"><h2>Alur pembelajaran</h2><p>1. Pelajari materi, video, dan simulasi.</p><p>2. Buka Daftar Tugas dan baca petunjuk guru.</p><p>3. Ketik jawaban LKPD atau tugas di menu Kumpulkan Tugas.</p><p>4. Periksa status di Riwayat Saya dan nilai di Nilai Saya.</p><p class="ask">Data tugas dan nilai tersimpan di browser ini saja. Guru dan siswa yang memakai perangkat atau browser berbeda belum saling melihat data.</p></div>
+<div class="card"><h2>Misi belajarmu</h2><div class="grid" id="mis" style="margin-top:12px"></div></div>
+<div class="card"><h3>Kasus 2026: Penjaga Pesisir</h3><p>Di pesisir yang berbatasan dengan lahan gambut, tinggi air naik turun mengikuti pasang. Tim peneliti muda bertanya: bagaimana tekanan air berubah terhadap kedalaman, mengapa sebagian benda terapung, dan bisakah akar mangrove meredam gelombang? Skenario ini untuk pembelajaran, bukan laporan lapangan terverifikasi.</p></div></section>
+
+<section class="panel" id="materi"><div class="card"><div class="tabs" id="tt"></div><div class="cols"><div class="fig" id="fg"></div><div id="tb"></div></div></div></section>
+
+<section class="panel" id="video"><div class="card"><h2>Video penjelasan: sehari di hutan mangrove</h2><p>Animasi 4 adegan tentang pasang, akar, gelombang, dan gambut.</p>
+<div class="vid"><svg viewBox="0 0 600 300" id="vs"></svg><div class="bar"><i id="vb"></i></div><div class="cap" id="vc"></div></div>
+<p><button class="btn g" id="vp">▶ Putar</button> <button class="btn" id="vn">Adegan berikutnya</button></p>
+<p class="ask">Video asli dari internet tidak dapat dimuat di halaman terbit ini, jadi penjelasannya dibuat sebagai animasi di dalam halaman.</p></div></section>
+
+<section class="panel" id="sim"><div class="card"><h2>Lab 1: Tekanan hidrostatis</h2><div class="cols"><svg class="sim" viewBox="0 0 300 220" id="s1"><rect x="40" y="30" width="220" height="170" fill="#2aa6c9"/><rect x="40" y="30" width="220" height="8" fill="#8fe3f5"/><rect x="30" y="30" width="10" height="175" fill="#7a5a3e"/><rect x="260" y="30" width="10" height="175" fill="#7a5a3e"/><rect x="30" y="200" width="240" height="10" fill="#7a5a3e"/><line id="pl" x1="150" y1="30" x2="150" y2="60" stroke="#fff" stroke-dasharray="4"/><circle id="pc" cx="150" cy="60" r="12" fill="#ffc43d" stroke="#073b4c" stroke-width="3"/></svg>
+<div><label>Kedalaman: <b id="dv"></b> m</label><input type="range" id="dp" min="0" max="5" step=".1" value="1"><label>Jenis air</label><select id="fl"><option value="1000">Air tawar (1000 kg/m³)</option><option value="1025">Air laut / payau (1025 kg/m³)</option></select><div class="out" id="po"></div></div></div></div>
+<div class="card"><h2>Lab 2: Terapung, melayang, tenggelam</h2><div class="cols"><svg class="sim" viewBox="0 0 300 220" id="s2"><rect x="40" y="90" width="220" height="110" fill="#2aa6c9" opacity=".75"/><rect id="bl" x="120" y="60" width="60" height="60" rx="8" fill="#c0803c" stroke="#073b4c" stroke-width="3" style="transition:y .7s"/><text x="150" y="215" text-anchor="middle" font-size="12" fill="#073b4c">gambut, kayu, atau batu?</text></svg>
+<div><label>Massa jenis benda: <b id="bv"></b> kg/m³ (air = 1000)</label><input type="range" id="bd" min="300" max="1600" step="10" value="600"><div class="out" id="bo"></div></div></div></div>
+<div class="card"><h2>Lab 3: Akar mangrove meredam gelombang</h2><canvas id="cv" width="640" height="220"></canvas>
+<label>Frekuensi gelombang: <b id="fv"></b> Hz</label><input type="range" id="fq" min=".5" max="3" step=".1" value="1"><label>Kerapatan akar: <b id="rv"></b>%</label><input type="range" id="rd" min="0" max="100" step="5" value="60"><div class="out" id="wo"></div></div></section>
+
+<section class="panel" id="kelas"><div class="card"><h2>Ruang Kelas Fisika X · Mangrove Gambut</h2><p>Guru dan teman sekelas ada di sini. Klik siswa yang mengangkat tangan untuk mendengar pertanyaannya.</p>
+<div class="room"><div class="front"><div class="win">🌴🌊</div><div class="board">P = ρ · g · h<small>Topik hari ini: tekanan air di hutan mangrove</small></div><div class="teach"><div>👩‍🏫</div>Guru Fisika</div></div><div class="desks" id="dk"></div></div>
+<div class="bub" id="bb">💬 Menunggu ada yang bertanya…</div></div>
+<div class="card"><h3>📢 Pengumuman guru</h3><div class="post"><span class="av">👩‍🏫</span><div><b>Guru Fisika</b><p>Selamat datang di kelas! Minggu ini kita belajar fluida lewat ekosistem mangrove. Mulai dari materi, lalu simulasi.</p></div></div><div class="post"><span class="av">👩‍🏫</span><div><b>Guru Fisika</b><p>Tugas: isi LKPD tekanan hidrostatis, lalu kerjakan kuis 15 soal. Skor tertinggi yang dicatat.</p></div></div></div>
+<div class="card"><h3>📌 Tugas kelas</h3><div class="grid" id="tg"></div></div>
+<div class="card"><h3>💬 Forum diskusi</h3><p class="ask">Teman sekelas dan balasan di forum ini disimulasikan. Tidak ada orang sungguhan yang membaca, dan komentarmu hanya tersimpan di browser ini.</p><textarea id="fi" rows="2" style="width:100%;font:inherit;border-radius:12px;border:2px solid var(--teal);padding:10px;background:#fff;color:#073b4c" placeholder="Tulis pertanyaan atau pendapatmu"></textarea><p><button class="btn g" id="fs">Kirim komentar</button></p><div id="fp"></div></div></section>
+<section class="panel" id="lkpd"><div class="card lk" id="lkb"></div></section>
+<section class="panel" id="tugas"><div class="card"><h2>📚 Daftar Tugas</h2><p>Pilih tugas dan perhatikan tenggat serta petunjuk guru.</p></div><div id="tl"></div></section>
+<section class="panel" id="kumpul"><div class="card lk"><h2>📤 Pengumpulan Tugas Online</h2><label>Pilih tugas</label><select id="ts"></select><label>Jawaban teks / isi LKPD</label><textarea id="tx" class="fi" rows="5" placeholder="Tuliskan hasil pengamatan, analisis, atau kesimpulan di sini..."></textarea><label>File tugas (PDF, DOCX, PPTX, JPG, PNG, maks. 10 MB)</label><input type="file" id="tf" class="fi" accept=".pdf,.docx,.pptx,.jpg,.jpeg,.png"><p class="ask">Di versi ini hanya nama file yang dicatat, isi file tidak ikut terunggah. Tulis jawabanmu juga di kotak teks.</p><button class="btn" id="tsend">Kumpulkan sekarang</button><p id="tst" aria-live="polite"></p></div></section>
+<section class="panel" id="riwayat"><div class="card"><h2>📁 Riwayat Pengumpulan Saya</h2></div><div id="rl"></div></section>
+<section class="panel" id="nilai"><div class="card"><h2>🏅 Nilai dan Umpan Balik</h2><p>Nilai muncul setelah diperiksa guru. Kuis dan LKPD yang kamu kumpulkan lewat menu masing-masing tercatat otomatis.</p></div><div id="nl"></div></section>
+<section class="panel" id="guru"><div class="card"><h2>👩‍🏫 Dashboard Guru</h2><p>Lihat pengumpulan siswa, beri nilai dan umpan balik.</p><p id="gst"></p></div><div id="gl"></div></section>
+<section class="panel" id="kelola"><div class="card lk"><h2>✏️ Buat Tugas Baru</h2><label>Judul tugas</label><input class="fi" id="nt" placeholder="Contoh: LKPD Kapilaritas Gambut"><label>Topik</label><input class="fi" id="np" placeholder="Contoh: Kapilaritas"><label>Petunjuk</label><textarea class="fi" id="ns" rows="3" placeholder="Instruksi pengerjaan untuk siswa"></textarea><label>Tenggat (opsional)</label><input class="fi" type="datetime-local" id="nd"><p><button class="btn" id="ct">Terbitkan tugas</button> <span id="cst"></span></p></div><div class="card"><h3>Tugas terbit</h3><div id="ml"></div></div></section>
+<section class="panel" id="kuis"><div class="card" id="qz"></div></section>
+</main></div>
+
+<script>
+const $=id=>document.getElementById(id),S={};let xp=0,done={},name='';
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+/* ---------- latar animasi ---------- */
+(function(){const b=$('bg');let h='<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b9ad8"/><stop offset=".45" stop-color="#ffb36b"/><stop offset=".7" stop-color="#ff8a7a"/></linearGradient><linearGradient id="wt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17b8b0"/><stop offset="1" stop-color="#065a6e"/></linearGradient><radialGradient id="sn"><stop offset="0" stop-color="#fff6b0"/><stop offset="1" stop-color="#ffc43d"/></radialGradient></defs><rect width="1200" height="700" fill="url(#sk)"/><circle class="sun" cx="900" cy="170" r="70" fill="url(#sn)"/>';
+h+='<g class="cl" opacity=".8"><ellipse cx="200" cy="110" rx="90" ry="24" fill="#fff"/><ellipse cx="260" cy="95" rx="55" ry="25" fill="#fff"/></g><g class="cl cl2" opacity=".7"><ellipse cx="500" cy="190" rx="110" ry="22" fill="#fff"/><ellipse cx="450" cy="178" rx="50" ry="20" fill="#fff"/></g>';
+const cols=['#1e8f5a','#12744a','#0b5a3c'],r=(a,i)=>(Math.sin(i*91.7+a)*.5+.5);
+for(let l=0;l<3;l++){const y=380+l*60,n=7+l*2;for(let i=0;i<n;i++){const x=i*(1200/(n-1))+(r(l,i)-.5)*60,s=1+l*.25;
+h+=`<g fill="${cols[l]}" stroke="${cols[l]}"><ellipse cx="${x}" cy="${y-70*s}" rx="${70*s}" ry="${40*s}"/><ellipse cx="${x-40*s}" cy="${y-45*s}" rx="${40*s}" ry="${26*s}"/><ellipse cx="${x+42*s}" cy="${y-48*s}" rx="${42*s}" ry="${28*s}"/><path d="M${x} ${y-40*s}V${y}" stroke-width="${8*s}" stroke="#5a3d28"/><path d="M${x} ${y-25*s}Q${x-40*s} ${y-10} ${x-55*s} ${y+30} M${x} ${y-25*s}Q${x+40*s} ${y-10} ${x+55*s} ${y+30} M${x} ${y-20*s}Q${x-12} ${y} ${x-16} ${y+34}" fill="none" stroke="#5a3d28" stroke-width="${3.5*s}"/></g>`}
+h+=`<rect y="${y+20}" width="1200" height="${700-y}" fill="url(#wt)" opacity="${.25+l*.2}"/>`}
+h+='<g class="wv"><path d="M-100 520Q-25 500 50 520T200 520T350 520T500 520T650 520T800 520T950 520T1100 520T1250 520V700H-100Z" fill="#0b8d9d" opacity=".55"/></g><g class="wv wv2"><path d="M-100 570Q-25 550 50 570T200 570T350 570T500 570T650 570T800 570T950 570T1100 570T1250 570V700H-100Z" fill="#06667d" opacity=".7"/></g>';
+for(let i=0;i<3;i++)h+=`<g class="fish" style="animation-delay:${-i*7}s"><g transform="translate(0 ${600+i*30})"><ellipse rx="18" ry="8" fill="#ffc43d"/><path d="M16 0l14-9v18z" fill="#ff6f59"/><circle cx="-9" cy="-2" r="2" fill="#073b4c"/></g></g>`;
+for(let i=0;i<16;i++)h+=`<circle class="ff" cx="${60+r(3,i)*1080}" cy="${380+r(5,i)*160}" r="3.5" fill="#fff59d" style="animation-delay:${-r(7,i)*4}s;animation-duration:${3+r(9,i)*3}s"/>`;
+})();
+/* ---------- wallpaper baru: lagun mangrove saat fajar ---------- */
+(function(){const b=$('bg'),R=(a,i)=>Math.sin(i*127.1+a*311.7)*.5+.5;
+const can=(cx,cy,s,pal,n,a)=>{let o='';for(let i=0;i<n;i++){const x=cx+(R(a,i)-.5)*230*s,y=cy+(R(a+1,i)-.5)*100*s,r=(20+R(a+2,i)*32)*s;o+=`<ellipse cx="${x|0}" cy="${y|0}" rx="${r|0}" ry="${r*.64|0}" fill="${pal[i%pal.length]}"/>`}return o};
+const tree=(x,y,s,pal,tk,a)=>`<g><path d="M${x} ${y-60*s}V${y}M${x} ${y-30*s}Q${x-45*s} ${y-10} ${x-62*s} ${y+36}M${x} ${y-30*s}Q${x+45*s} ${y-10} ${x+62*s} ${y+36}M${x} ${y-22*s}Q${x-14} ${y} ${x-18} ${y+40}" fill="none" stroke="${tk}" stroke-width="${5*s}" stroke-linecap="round"/>${can(x,y-95*s,s,pal,9,a)}</g>`;
+const row=(y,s,pal,tk,n,a)=>{let o='';for(let i=0;i<n;i++)o+=tree((i+.5)*1200/n+(R(a,i)-.5)*70,y,s*(.85+R(a+3,i)*.4),pal,tk,a+i);return o};
+let h='<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a6fc0"/><stop offset=".3" stop-color="#7ec8e3"/><stop offset=".55" stop-color="#ffe2a0"/><stop offset=".7" stop-color="#ffa56e"/></linearGradient><linearGradient id="wt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38c4b8"/><stop offset=".5" stop-color="#0a8a9c"/><stop offset="1" stop-color="#053f58"/></linearGradient><radialGradient id="glw"><stop offset="0" stop-color="#fff3b0" stop-opacity=".95"/><stop offset="1" stop-color="#ffc43d" stop-opacity="0"/></radialGradient><linearGradient id="ms" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#fff6dc" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><filter id="b1"><feGaussianBlur stdDeviation="7"/></filter><filter id="b2"><feGaussianBlur stdDeviation="2.2"/></filter><filter id="b3"><feGaussianBlur stdDeviation="3"/></filter></defs><rect width="1200" height="700" fill="url(#sk)"/>';
+h+='<g class="ray" opacity=".16" fill="#fff6c0">'+[0,1,2,3,4,5,6,7,8].map(i=>{const a=i*40*Math.PI/180;return `<path d="M900 170L${900+1500*Math.cos(a-.07)|0} ${170+1500*Math.sin(a-.07)|0}L${900+1500*Math.cos(a+.07)|0} ${170+1500*Math.sin(a+.07)|0}Z"/>`}).join('')+'</g>';
+h+='<circle cx="900" cy="170" r="210" fill="url(#glw)" class="sun"/><circle cx="900" cy="170" r="58" fill="#fffbe0"/>';
+h+='<path d="M0 430Q150 350 330 410T640 390T980 420T1200 380V520H0Z" fill="#4f9fb0" opacity=".55" filter="url(#b1)"/><path d="M0 450Q200 395 400 440T800 430T1200 420V520H0Z" fill="#2f8a86" opacity=".7" filter="url(#b3)"/>';
+h+='<g filter="url(#b2)" opacity=".85">'+row(470,.55,['#4aa683','#6bc29a','#3b9275'],'#4a6f5a',9,2)+'</g><rect y="380" width="1200" height="150" fill="url(#ms)"/>';
+h+='<g id="mid">'+row(505,.95,['#1c8a55','#2ba865','#157a4b','#86d06a','#0f6a42'],'#4a3322',6,7)+'</g>';
+h+='<rect y="505" width="1200" height="195" fill="url(#wt)"/><g transform="translate(0 800) scale(1 -.58)" opacity=".3" filter="url(#b2)"><use href="#mid"/></g><g class="wv"><path d="M-100 560Q-25 548 50 560T200 560T350 560T500 560T650 560T800 560T950 560T1100 560T1250 560" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/></g><g class="wv wv2"><path d="M-100 610Q-25 596 50 610T200 610T350 610T500 610T650 610T800 610T950 610T1100 610T1250 610" stroke="#fff" stroke-opacity=".2" stroke-width="3" fill="none"/></g>';
+for(let i=0;i<14;i++)h+=`<rect class="shm" x="${900-70+i*4}" y="${512+i*13}" width="${150-i*8}" height="4" rx="2" fill="#fff3b0" opacity=".7" style="animation-delay:${-i*.3}s"/>`;
+for(let i=0;i<3;i++)h+=`<ellipse class="rp" cx="${220+i*330}" cy="${600+i*30}" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="2" style="animation-delay:${-i*1.7}s"/>`;
+h+='<g fill="#0a3d2b">'+tree(70,640,2.1,['#0c4a31','#0a3d2b','#14653f'],'#2a1c12',21)+tree(1140,650,2.3,['#0c4a31','#0a3d2b','#14653f'],'#2a1c12',33)+'</g>';
+for(let i=0;i<4;i++)h+=`<g class="bd" style="animation-delay:${-i*7}s;animation-duration:${26+i*5}s"><path transform="translate(0 ${90+i*40})" d="M0 0q8-9 16 0q8-9 16 0" stroke="#fff" stroke-width="2.5" fill="none"/></g>`;
+for(let i=0;i<26;i++)h+=`<circle class="ff" cx="${40+R(4,i)*1120|0}" cy="${330+R(6,i)*300|0}" r="${2+R(8,i)*2.5}" fill="#fff9b0" style="animation-delay:${-R(1,i)*5}s;animation-duration:${3+R(2,i)*4}s"/>`;
+})();
+/* wallpaper v3: lagun fajar dengan kawanan burung kuntul */
+(function(){const b=$('bg'),R=(a,i)=>Math.sin(i*127.1+a*311.7)*.5+.5;
+const can=(cx,cy,s,pal,n,a)=>{let o='';for(let i=0;i<n;i++){const x=cx+(R(a,i)-.5)*240*s,y=cy+(R(a+1,i)-.5)*100*s,r=(22+R(a+2,i)*30)*s;o+=`<ellipse cx="${x|0}" cy="${y|0}" rx="${r|0}" ry="${r*.6|0}" fill="${pal[i%pal.length]}"/>`;if(i%3==0)o+=`<ellipse cx="${x+r*.2|0}" cy="${y-r*.25|0}" rx="${r*.6|0}" ry="${r*.3|0}" fill="#d4f59a" opacity=".3"/>`}return o};
+const tree=(x,y,s,pal,tk,a)=>`<g><path d="M${x} ${y-60*s}V${y}M${x} ${y-30*s}Q${x-45*s} ${y-10} ${x-62*s} ${y+36}M${x} ${y-30*s}Q${x+45*s} ${y-10} ${x+62*s} ${y+36}M${x} ${y-22*s}Q${x-14} ${y} ${x-18} ${y+40}" fill="none" stroke="${tk}" stroke-width="${5*s}" stroke-linecap="round"/>${can(x,y-95*s,s,pal,9,a)}</g>`;
+const row=(y,s,pal,tk,n,a)=>{let o='';for(let i=0;i<n;i++)o+=tree((i+.5)*1200/n+(R(a,i)-.5)*70,y,s*(.85+R(a+3,i)*.4),pal,tk,a+i);return o};
+const cloud=(d,y,s,dur)=>`<g class="cl" style="animation-duration:${dur}s;animation-delay:${-d}s" filter="url(#wb3)"><g transform="translate(0 ${y}) scale(${s})" opacity=".92"><ellipse rx="110" ry="26" fill="#fff"/><ellipse cx="-50" cy="-18" rx="55" ry="26" fill="#fff"/><ellipse cx="40" cy="-24" rx="60" ry="30" fill="#fff"/><ellipse cy="14" rx="120" ry="14" fill="#ffd9c8"/></g></g>`;
+const bird=(dx,dy,s,d,c)=>{const w=c||'#fff',e=c?'#16222f':'#cfe0e8',lg=c||'#2b3a4a';return `<g transform="translate(${dx|0} ${dy|0}) scale(${s} ${Math.abs(s)})"><path class="wf" style="animation-delay:${(d+.12).toFixed(2)}s" d="M-2 0Q-14 -22 -40 -26Q-22 -8 -4 4Z" fill="${e}"/><path d="M-14 6L-34 9" stroke="${lg}" stroke-width="1.6"/><ellipse cy="4" rx="16" ry="5" fill="${w}"/><path d="M12 3Q22 -6 26 -3" stroke="${w}" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="27" cy="-4" r="3.2" fill="${w}"/><path d="M29.5 -4.5L41 -2L29.5 -2Z" fill="#ffb703"/><path class="wn" style="animation-delay:${d.toFixed(2)}s" d="M0 1Q-10 -26 -36 -34Q-16 -10 -2 6Z" fill="${w}" stroke="${e}" stroke-width="1"/></g>`};
+const flock=(y,s,dur,delay,n,dir,c)=>{let o='';for(let i=0;i<n;i++){const k=Math.ceil(i/2),sd=i%2?1:-1;o+=bird(-dir*k*46*s,i?sd*k*20*s:0,dir*s,R(3,i)*.6,c)}return `<g class="fx" style="animation-duration:${dur}s;animation-delay:${-delay}s${dir<0?';animation-direction:reverse':''}"><g class="fy" style="animation-duration:${3+dur%3}s"><g transform="translate(0 ${y})">${o}</g></g></g>`};
+let h='<defs><linearGradient id="wsk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c4e9f"/><stop offset=".25" stop-color="#3b8ed4"/><stop offset=".5" stop-color="#9bd6ea"/><stop offset=".62" stop-color="#ffe7ae"/><stop offset=".7" stop-color="#ffc08a"/><stop offset="1" stop-color="#ff9f80"/></linearGradient><linearGradient id="wwt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9a6"/><stop offset=".18" stop-color="#7fd6cf"/><stop offset=".55" stop-color="#0fa0a6"/><stop offset="1" stop-color="#064a63"/></linearGradient><radialGradient id="wgl"><stop offset="0" stop-color="#fff6c4" stop-opacity=".95"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient><linearGradient id="wms" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#fff3d6" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><filter id="wb1"><feGaussianBlur stdDeviation="7"/></filter><filter id="wb2"><feGaussianBlur stdDeviation="2.2"/></filter><filter id="wb3"><feGaussianBlur stdDeviation="6"/></filter></defs><rect width="1200" height="700" fill="url(#wsk)"/>';
+h+='<g class="rz" opacity=".2" fill="#fff3b8">'+[...Array(11).keys()].map(i=>{const a=(-170+i*16)*Math.PI/180;return `<path d="M860 395L${860+1500*Math.cos(a-.05)|0} ${395+1500*Math.sin(a-.05)|0}L${860+1500*Math.cos(a+.05)|0} ${395+1500*Math.sin(a+.05)|0}Z"/>`}).join('')+'</g>';
+h+=cloud(4,110,1.1,70)+cloud(25,200,.8,95)+cloud(48,70,1.4,120)+cloud(60,290,.7,85);
+h+='<circle class="sg" cx="860" cy="395" r="230" fill="url(#wgl)"/><circle cx="860" cy="395" r="46" fill="#fffbe6"/>';
+h+='<path d="M0 486V420Q120 350 240 405Q330 375 430 415Q560 320 700 410Q820 370 960 420Q1080 385 1200 415V486Z" fill="#6aa3c4" opacity=".6" filter="url(#wb1)"/><path d="M0 486V445Q200 395 400 440T800 430T1200 425V486Z" fill="#2f8a86" opacity=".75" filter="url(#wb2)"/>';
+h+='<g filter="url(#wb2)" opacity=".9">'+row(492,.55,['#4aa683','#6bc29a','#3b9275'],'#4a6f5a',9,2)+'</g><rect y="400" width="1200" height="120" fill="url(#wms)"/>';
+h+='<g id="wmid">'+row(532,.95,['#1c8a55','#2ba865','#157a4b','#86d06a','#0f6a42'],'#4a3322',6,7)+'</g>';
+h+='<rect y="486" width="1200" height="214" fill="url(#wwt)"/><g transform="translate(0 824) scale(1 -.58)" opacity=".3" filter="url(#wb2)"><use href="#wmid"/></g><g class="wv"><path d="M-100 570Q-25 558 50 570T200 570T350 570T500 570T650 570T800 570T950 570T1100 570T1250 570" stroke="#fff" stroke-opacity=".28" stroke-width="3" fill="none"/></g><g class="wv wv2"><path d="M-100 620Q-25 606 50 620T200 620T350 620T500 620T650 620T800 620T950 620T1100 620T1250 620" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none"/></g>';
+for(let i=0;i<16;i++){const w=40+i*10;h+=`<rect class="shm" x="${860-w/2}" y="${494+i*12}" width="${w}" height="4" rx="2" fill="#fff3b0" opacity=".75" style="transform-origin:860px 0;animation-delay:${-i*.3}s"/>`}
+const dk=['#0c4a31','#0a3d2b','#14653f'];
+h+='<g>'+tree(40,700,2,dk,'#2a1c12',21)+tree(1160,700,2.2,dk,'#2a1c12',33)+can(40,-10,1.7,dk,12,50)+can(1170,0,1.9,dk,12,61)+'</g>';
+h+=flock(95,1,44,12,7,1)+flock(230,.6,62,38,5,1)+flock(55,.42,78,50,9,1)+flock(300,.7,56,20,3,-1,'#243447')+flock(165,1.35,30,6,1,-1)+flock(140,.5,70,15,4,-1);
+for(let i=0;i<28;i++)h+=`<circle class="ff" cx="${30+R(4,i)*1140|0}" cy="${300+R(6,i)*350|0}" r="${1.5+R(8,i)*2.5}" fill="#fff2a8" style="animation-delay:${-R(1,i)*5}s;animation-duration:${3+R(2,i)*4}s"/>`;
+b.innerHTML=h})();
+/* ---------- musik: marimba ceria (Web Audio) ---------- */
+(function(){let ac,mg,t0,step=0,tm,on=false;const f=m=>440*2**((m-69)/12);
+const ch=[[48,55,64],[45,52,60],[41,53,60],[43,55,62]],
+ml=[[72,0,76,79,76,0,74,72],[69,0,72,76,72,0,71,69],[72,0,77,81,77,0,76,72],[74,0,79,83,79,76,74,71]];
+function pl(m,t,g,d){const o=ac.createOscillator(),o2=ac.createOscillator(),e=ac.createGain();o.type='triangle';o2.type='sine';o.frequency.value=f(m);o2.frequency.value=f(m)*4;
+e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(g,t+.01);e.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(e);o2.connect(e);e.connect(mg);o.start(t);o2.start(t);o.stop(t+d);o2.stop(t+d)}
+function sched(){while(t0<ac.currentTime+.3){const bar=Math.floor(step/8)%4,i=step%8,rd=Math.floor(step/32)%2,c=ch[bar];
+const m=ml[bar][i];if(m)pl(m+(rd&&i==3?12:0),t0,.13,1.1);
+if(i==0||i==4)pl(c[0]-12,t0,.2,.9);if(i%2==0)pl(c[(i/2)%3]+(rd?12:0),t0,.05,.7);
+step++;t0+=.25}}
+$('mus').onclick=()=>{on=!on;if(on){if(!ac){ac=new(window.AudioContext||window.webkitAudioContext)();mg=ac.createGain();mg.gain.value=.6;const d=ac.createDelay(),fb=ac.createGain();d.delayTime.value=.375;fb.gain.value=.3;mg.connect(ac.destination);mg.connect(d);d.connect(fb);fb.connect(d);d.connect(ac.destination)}
+ac.resume();t0=ac.currentTime+.1;tm=setInterval(sched,100)}else{clearInterval(tm);ac&&ac.suspend()}
+$('mus').classList.toggle('on',on);$('mus').setAttribute('aria-pressed',on);$('mus').textContent=on?'🎶 Musik hidup':'🎵 Musik mati'};
+S.music=()=>{if(!on)$('mus').click()}})();
+/* ---------- navigasi, XP, misi ---------- */
+const P=[['home','🏠 Beranda'],['kelas','🏫 Ruang Kelas'],['materi','📖 Materi'],['video','🎬 Video'],['sim','🧪 Simulasi'],['lkpd','📋 LKPD'],['kuis','📝 Kuis']];
+const M=[['kelas','Masuk ruang kelas'],['materi','Baca 6 materi'],['video','Tonton video'],['sim','Coba 3 simulasi'],['lkpd','Kumpulkan LKPD'],['kuis','Selesaikan kuis']];
+function go(p){document.querySelectorAll('.panel').forEach(e=>e.classList.toggle('on',e.id==p));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.p==p));scrollTo({top:0,behavior:'smooth'});if(p=='video')done.video=1;if(p=='kelas')kelas();if(p=='lkpd')lk();lmsRef();if(p=='kuis'&&!S.qs)quiz();ref()}
+function add(k,n){if(done[k])return;done[k]=1;xp+=n;ref()}
+function ref(){$('xp').textContent='⭐ '+xp+' XP';store.set('fk_xp',xp);
+const d=done,c={materi:Object.keys(d).filter(k=>k[0]=='m').length>=6,video:d.video,kelas:d.kelas,lkpd:d.lkpd,sim:['s1','s2','s3'].every(k=>d[k]),kuis:d.kuis};
+$('mis').innerHTML=M.map(m=>`<div class="mis ${c[m[0]]?'ok':''}">${c[m[0]]?'✅':'⬜'} ${m[1]}</div>`).join('');}
+$('nav').innerHTML=P.concat([['tugas','📚 Daftar Tugas'],['kumpul','📤 Kumpulkan Tugas'],['riwayat','📁 Riwayat Saya'],['nilai','🏅 Nilai Saya'],['guru','👩‍🏫 Ruang Guru','tg'],['kelola','✏️ Kelola Tugas','tg']]).map(p=>`<button class="${p[2]||''}" data-p="${p[0]}" onclick="go('${p[0]}')">${p[1]}</button>`).join('');
+/* ---------- materi ---------- */
+const T=[['💧','Tekanan hidrostatis','P = ρ · g · h','Tekanan di dalam air diam bertambah seiring kedalaman. Akar mangrove yang terendam pasang menerima tekanan lebih besar saat air naik.','Berapa tekanan pada akar yang terendam 1,5 m air payau?'],
+['🛶','Gaya apung','Fa = ρ · g · V','Benda terapung jika massa jenis rata-ratanya lebih kecil dari fluida. Itu sebabnya bibit mangrove (propagul) dapat hanyut mengikuti pasang sebelum menancap di lumpur.','Mengapa propagul bisa mengapung, tetapi batu tenggelam?'],
+['🧽','Kapilaritas dan pori tanah','h = 2γ cos θ / (ρ g r)','Air naik pada celah sempit karena adhesi lebih kuat daripada kohesi. Gambut punya banyak pori sehingga mampu menyimpan air layaknya spons.','Mengapa gambut yang kering sulit menyerap air kembali?'],
+['🌊','Gelombang dan sedimen','v = λ · f','Gelombang membawa energi. Barisan akar mangrove memperlambat aliran dan mengurangi tinggi gelombang, sehingga sedimen mengendap dan pantai terlindungi.','Bagaimana kerapatan akar memengaruhi gelombang yang tiba di pantai?'],
+['🔥','Kalor dan suhu','Q = m · c · ΔT','Air memiliki kalor jenis tinggi (4200 J/kg·K) sehingga suhu perairan mangrove lebih stabil daripada daratan di sekitarnya.','Mengapa udara dekat perairan terasa lebih sejuk di siang hari?'],
+['📡','Aliran air dan sensor','A₁v₁ = A₂v₂','Saat saluran menyempit, laju air bertambah. Sensor tinggi muka air memantau perubahan pasang dan kondisi lahan gambut; alat perlu dikalibrasi dengan acuan.','Bagaimana laju air berubah ketika parit gambut menyempit?']];
+let ti=0;function mat(i){ti=i;done['m'+i]=1;if(!done['x'+i]){xp+=5;done['x'+i]=1}ref();
+$('tt').innerHTML=T.map((t,j)=>`<button class="${j==i?'on':''}" onclick="mat(${j})">${t[0]} ${j+1}</button>`).join('');
+const t=T[i];$('fg').innerHTML=`<span>${t[0]}${['🌳','🌱','🟤','🦀','☀️','📊'][i]}</span>`;
+$('tb').innerHTML=`<span class="tag">Materi ${i+1} dari 6</span><h2>${t[1]}</h2><div class="fm">${t[2]}</div><p>${t[3]}</p><div class="ask">🤔 <b>Pertanyaan pemantik:</b> ${t[4]}</div>`}
+/* ---------- video animasi ---------- */
+const V=[['🌊 Pasang naik: air payau merayap ke antara akar. Tinggi air berubah, begitu pula tekanan pada akar yang terendam.','<rect width="600" height="300" fill="#8fd9f0"/><rect x="0" y="210" width="600" height="90" fill="#7a5a3e"/><rect x="0" y="150" width="600" height="150" fill="#1b9ab8" opacity=".7"><animate attributeName="y" values="230;140;230" dur="6s" repeatCount="indefinite"/></rect><text x="300" y="70" text-anchor="middle" font-size="46">🌳 🌳 🌳</text>'],
+['🌿 Akar tunjang berdiri di lumpur. Tegak, bercabang, dan menahan air serta sedimen di sekitarnya.','<rect width="600" height="300" fill="#bfeaf2"/><rect y="200" width="600" height="100" fill="#7a5a3e"/><g stroke="#5a3d28" stroke-width="7" fill="none"><path d="M300 90Q230 150 190 250M300 90Q370 150 410 250M300 90V240"/></g><circle cx="300" cy="70" r="55" fill="#1e8f5a"/><g fill="#fff" opacity=".8"><circle cx="120" cy="260" r="6"><animate attributeName="cy" values="260;120" dur="3s" repeatCount="indefinite"/></circle><circle cx="480" cy="250" r="5"><animate attributeName="cy" values="250;110" dur="4s" repeatCount="indefinite"/></circle></g>'],
+['🛡️ Gelombang tiba, lalu melemah saat melewati barisan akar. Energinya berkurang sebelum mencapai pantai.','<rect width="600" height="300" fill="#bfeaf2"/><path d="M0 150Q40 60 80 150T160 150T240 150" stroke="#0a7c8c" stroke-width="8" fill="none"><animateTransform attributeName="transform" type="translate" values="0 0;80 0" dur="2s" repeatCount="indefinite"/></path><path d="M300 170Q320 150 340 170T380 170T420 170T460 170" stroke="#0a7c8c" stroke-width="4" fill="none" opacity=".6"/><g stroke="#5a3d28" stroke-width="6"><path d="M250 120V260M290 120V260M330 120V260M370 120V260"/></g><rect y="250" width="600" height="50" fill="#7a5a3e"/>'],
+['🟤 Gambut menyimpan air di pori-porinya seperti spons raksasa. Selama basah, lahan tetap sehat.','<rect width="600" height="300" fill="#e7d3b0"/><rect y="90" width="600" height="210" fill="#6e4b32"/><g fill="#1b9ab8"><circle cx="90" cy="140" r="12"/><circle cx="200" cy="200" r="16"/><circle cx="330" cy="150" r="13"/><circle cx="440" cy="220" r="18"/><circle cx="520" cy="130" r="11"/><circle cx="140" cy="260" r="12"/><circle cx="380" cy="265" r="14"/><animate attributeName="opacity" values="1;.5;1" dur="3s" repeatCount="indefinite"/></g><text x="300" y="60" text-anchor="middle" font-size="40">☁️ 🌧️ ☁️</text>']];
+let vi=0,vt=null;$('vs').innerHTML=V.map((v,i)=>`<g class="sc">${v[1]}</g>`).join('');
+function scene(i){vi=i%4;[...$('vs').children].forEach((g,j)=>g.classList.toggle('on',j==vi));$('vc').textContent=V[vi][0];$('vb').style.width=(vi+1)*25+'%'}
+$('vn').onclick=()=>scene(vi+1);$('vp').onclick=()=>{if(vt){clearInterval(vt);vt=null;$('vp').textContent='▶ Putar'}else{vt=setInterval(()=>scene(vi+1),6000);$('vp').textContent='⏸ Jeda';add('vid',10)}};scene(0);
+/* ---------- simulasi ---------- */
+function s1(){const h=+$('dp').value,r=+$('fl').value;$('dv').textContent=h.toFixed(1);const y=30+h*34;$('pc').setAttribute('cy',Math.max(y,42));$('pl').setAttribute('y2',Math.max(y,42));
+$('po').innerHTML=`Tekanan hidrostatis = ${(r*10*h).toLocaleString('id-ID')} Pa<br>Tekanan total = ${(r*10*h+101325).toLocaleString('id-ID')} Pa`;if(h>=3)add('s1',15)}
+function s2(){const d=+$('bd').value;$('bv').textContent=d;let y,t;if(d<975){y=90-60*(1-d/1000)+0;t='Terapung: '+Math.round(d/10)+'% volume tercelup'}else if(d<=1025){y=125;t='Melayang di dalam air'}else{y=140;t='Tenggelam: massa jenis benda lebih besar'}
+$('bl').setAttribute('y',y);$('bo').textContent=t;add('s2',15)}
+(function(){const c=$('cv'),x=c.getContext('2d');let ph=0;
+function draw(){const f=+$('fq').value,rd=+$('rd').value/100,W=640,H=220,x0=300;$('fv').textContent=f;$('rv').textContent=Math.round(rd*100);
+x.clearRect(0,0,W,H);x.fillStyle='#7a5a3e';x.fillRect(0,190,W,30);
+x.strokeStyle='#5a3d28';x.lineWidth=4;for(let i=0;i<8;i++){const a=x0+i*40;x.globalAlpha=.25+rd*.75;x.beginPath();x.moveTo(a,90);x.lineTo(a-6,200);x.stroke()}x.globalAlpha=1;
+x.fillStyle='#1e8f5a';for(let i=0;i<8;i++){x.beginPath();x.arc(x0+i*40,80,22,0,7);x.fill()}
+ph+=.05*f;x.strokeStyle='#0a6e8c';x.lineWidth=5;x.beginPath();
+for(let i=0;i<=W;i+=4){const k=i>x0?Math.exp(-(i-x0)/130*(rd*3.2)):1,y=150+28*k*Math.sin(i/(36/f**.5)-ph*3);i?x.lineTo(i,y):x.moveTo(i,y)}x.stroke();
+const left=Math.round(Math.exp(-(560-x0)/130*(rd*3.2))*100);$('wo').textContent=`Tinggi gelombang yang tiba di pantai ≈ ${left}% dari gelombang awal`;if(rd>=.5&&f>=1.5)add('s3',15);requestAnimationFrame(draw)}draw()})();
+$('dp').oninput=$('fl').oninput=s1;$('bd').oninput=s2;s1();s2();delete done.s2;
+/* ---------- kuis 15 soal ---------- */
+const Q=[['Tekanan hidrostatis pada suatu titik di dalam air bergantung pada…',['massa jenis, gravitasi, dan kedalaman','warna dan suhu air','luas permukaan wadah','lebar sungai'],0],
+['Dengan ρ air tawar 1000 kg/m³ dan g = 10 m/s², tekanan hidrostatis pada kedalaman 2 m adalah…',['2.000 Pa','10.000 Pa','20.000 Pa','200.000 Pa'],2],
+['Jika kedalaman menjadi dua kali lipat, tekanan hidrostatis menjadi…',['tetap','dua kali','setengah','empat kali'],1],
+['Sebuah benda terapung apabila massa jenis rata-ratanya…',['sama dengan nol','lebih besar dari fluida','lebih kecil dari fluida','tidak berpengaruh'],2],
+['Benda bervolume 0,002 m³ tercelup penuh di air (ρ = 1000 kg/m³, g = 10). Gaya apungnya…',['2 N','20 N','200 N','2000 N'],1],
+['Untuk volume tercelup yang sama, gaya apung di air laut dibanding air tawar akan…',['lebih besar','lebih kecil','sama','nol'],0],
+['Air dapat naik pada pipa kapiler karena…',['kohesi lebih besar dari adhesi','adhesi lebih besar dari kohesi','gravitasi nol','tekanan udara nol'],1],
+['Kenaikan air pada pipa kapiler akan lebih tinggi pada pipa yang…',['lebih lebar','lebih panjang','lebih sempit','lebih berat'],2],
+['Gelombang bergelombang λ = 2 m dan f = 0,5 Hz memiliki cepat rambat…',['0,25 m/s','1 m/s','2 m/s','4 m/s'],1],
+['Akar mangrove membantu meredam gelombang karena…',['menambah energi gelombang','menghambat aliran dan mengurangi energi gelombang','membuat air lebih panas','menghilangkan massa jenis air'],1],
+['Kalor untuk menaikkan suhu 2 kg air (c = 4200 J/kg·K) sebesar 5 K adalah…',['4.200 J','21.000 J','42.000 J','84.000 J'],2],
+['Perairan mangrove cenderung bersuhu stabil karena air memiliki…',['massa jenis kecil','kalor jenis tinggi','viskositas nol','tekanan rendah'],1],
+['Gambut mampu menyimpan banyak air terutama karena…',['porinya banyak','sangat padat dan tanpa celah','tidak mengandung bahan organik','selalu kering'],0],
+['Pada persamaan kontinuitas, jika penampang saluran menyempit maka laju air…',['berkurang','tetap','bertambah','menjadi nol'],2],
+['Kalibrasi pada sensor tinggi muka air dilakukan dengan…',['membandingkannya dengan alat acuan','mengganti warna sensor','menaikkan suhu sensor','mematikan sensor'],0]];
+S.qs=0;let qi=0,ans=[];
+function quiz(){S.qs=1;qi=0;ans=[];q()}
+function q(){if(qi>=15)return res();const z=Q[qi];$('qz').innerHTML=`<span class="tag">Soal ${qi+1} dari 15</span><div class="bar" style="background:#0a7c8c33;margin:10px 0;border-radius:9px"><i style="width:${qi/15*100}%;background:var(--coral)"></i></div><h3 style="font-size:1.35rem;margin-bottom:10px">${z[0]}</h3>`+z[1].map((o,j)=>`<button class="opt" onclick="pick(${j})">${'ABCD'[j]}. ${o}</button>`).join('')}
+function pick(j){const z=Q[qi];ans[qi]=j;document.querySelectorAll('.opt').forEach((b,k)=>{b.disabled=1;if(k==z[2])b.classList.add('ok');else if(k==j)b.classList.add('no')});
+$('qz').insertAdjacentHTML('beforeend',`<p><b>${j==z[2]?'🎉 Benar!':'Belum tepat, jawaban benar: '+'ABCD'[z[2]]}</b></p><button class="btn" onclick="qi++;q()">${qi<14?'Lanjut':'Lihat skor'}</button>`)}
+function res(){const c=ans.filter((a,i)=>a==Q[i][2]).length,sc=Math.max(1,Math.round(c/15*100)),old=+store.get('fk_best')||0;if(sc>old)store.set('fk_best',sc);autoSub('tq','Kuis 15 soal: '+c+' dari 15 benar',sc,'Dinilai otomatis oleh sistem');if(!done.kuis){xp+=sc>>1}done.kuis=1;ref();
+const w=Q.map((z,i)=>ans[i]==z[2]?'':`<li>${z[0]} <b>→ ${z[1][z[2]]}</b></li>`).join('');
+$('qz').innerHTML=`<div style="text-align:center"><div style="font-size:3rem">${sc>=80?'🏆':sc>=60?'🌟':'🌱'}</div><div class="score">${sc}</div><p><b>${c} dari 15 benar</b> · skor terbaikmu ${Math.max(sc,old)}</p><p>${name}, ${sc>=80?'luar biasa, kamu penjaga pesisir sejati!':sc>=60?'bagus, sedikit lagi sempurna.':'pelajari materi dan simulasi, lalu coba lagi.'}</p></div>${w?'<h3>Pembahasan jawaban yang belum tepat</h3><ul>'+w+'</ul>':''}<p style="text-align:center"><button class="btn" onclick="quiz()">Ulangi kuis</button> <button class="btn g" onclick="go(\'materi\')">Buka materi</button></p>`}
+/* ---------- ruang kelas ---------- */
+const SN=['Aisyah','Bima','Citra','Dimas','Eka','Fajar','Gita','Hana','Indra','Jihan','Kevin'],SE=['👧','👦','🧒','👩','🧑','👨','👧','🧒','👦','👩','🧑'];
+const SQ=[['Bu, kenapa akar yang lebih dalam menerima tekanan lebih besar?','Karena P = ρgh. Makin besar kedalaman h, makin besar tekanan hidrostatisnya.'],['Kenapa kayu mengapung tetapi batu tenggelam?','Massa jenis rata-rata kayu lebih kecil dari air, sedangkan batu lebih besar.'],['Apakah akar mangrove benar-benar meredam gelombang?','Ya. Akar menghambat aliran sehingga tinggi dan energi gelombang berkurang. Coba Lab 3!'],['Kenapa gambut disebut seperti spons?','Pori-porinya banyak sehingga mampu menyimpan air dalam jumlah besar.'],['Rumus kalor yang dipakai apa, Bu?','Q = m · c · ΔT. Air memiliki kalor jenis tinggi sehingga suhunya stabil.']];
+function kelas(){done.kelas=1;ref();tugas();if(S.kl)return;S.kl=1;
+$('dk').innerHTML=SN.slice(0,5).map((n,i)=>dk(n,SE[i],i)).join('')+`<button class="desk me" disabled><span class="av">🧑‍🎓</span>${name||'Kamu'} (kamu)</button>`+SN.slice(5).map((n,i)=>dk(n,SE[i+5],i+5)).join('');
+setInterval(()=>{const d=document.querySelectorAll('.desk[data-i]');d.forEach(x=>x.classList.remove('r'));d[Math.floor(Math.random()*d.length)].classList.add('r')},5000);
+const P0=JSON.parse(store.get('fk_posts')||'[]');if(!P0.length)P0.push(['Aisyah','👧','Aku sudah coba Lab 3, makin rapat akarnya makin kecil gelombang yang sampai ke pantai!'],['Bima','👦','Ada yang paham soal kapilaritas? Aku masih bingung.']);S.fp=P0;fp();
+$('fs').onclick=()=>{const t=$('fi').value.trim();if(!t)return;S.fp.push([name||'Kamu','🧑‍🎓',t]);$('fi').value='';add('fr',10);fp();setTimeout(()=>{S.fp.push(['Citra','🧒',['Setuju! Coba juga baca materinya ya.','Menarik, aku juga mikir begitu.','Nanti kita bahas bareng di kelas!'][S.fp.length%3]]);fp()},1500)}}
+function dk(n,e,i){return `<button class="desk" data-i="${i}" onclick="ask(${i%5},'${n}',this)"><span class="hd">✋</span><span class="av">${e}</span>${n}</button>`}
+function ask(k,n,el){const q=SQ[k];$('bb').innerHTML=`🙋 <b>${n}:</b> ${q[0]}<br>👩‍🏫 <b>Guru Fisika:</b> ${q[1]}`;el.classList.remove('r');add('as'+k,3)}
+function fp(){store.set('fk_posts',JSON.stringify(S.fp.slice(-20)));$('fp').innerHTML=S.fp.slice(-20).map(p=>`<div class="post"><span class="av">${p[1]}</span><div><b>${p[0]}</b><p>${p[2].replace(/</g,'&lt;')}</p></div></div>`).join('')}
+function tugas(){const t=[['lkpd','📋 LKPD Tekanan Hidrostatis',done.lkpd],['sim','🧪 Selesaikan 3 simulasi',['s1','s2','s3'].every(k=>done[k])],['kuis','📝 Kuis 15 soal',done.kuis]];$('tg').innerHTML=t.map(x=>`<div class="mis ${x[2]?'ok':''}" style="cursor:pointer" onclick="go('${x[0]}')">${x[2]?'✅':'⬜'} ${x[1]}</div>`).join('')}
+/* ---------- LKPD ---------- */
+function lk(){if(S.lk)return;S.lk=1;const H=[.5,1,1.5,2,2.5],v=JSON.parse(store.get('fk_lk')||'{}');
+const ta=(id,l,r)=>`<h3>${l}</h3><textarea id="${id}" rows="${r||3}">${(v[id]||'').replace(/</g,'&lt;')}</textarea>`;
+$('lkb').innerHTML=`<h2>LKPD: Tekanan Hidrostatis di Perairan Mangrove</h2><p><b>Nama:</b> ${name} &nbsp; <b>Kelas:</b> X</p><h3>Tujuan</h3><p>Menghitung tekanan hidrostatis pada beberapa kedalaman dan menjelaskan pengaruh kedalaman terhadap tekanan pada akar mangrove.</p>${ta('d','1. Dugaan awal: bagaimana hubungan kedalaman dan tekanan air?')}<h3>2. Data dan pengolahan</h3><p>Gunakan ρ = 1000 kg/m³ dan g = 10 m/s². Boleh memakai Lab 1 untuk membandingkan.</p><table><tr><th>Kedalaman h (m)</th><th>P = ρgh (Pa)</th></tr>${H.map((h,i)=>`<tr><td>${h}</td><td><input class="n" id="p${i}" inputmode="decimal" value="${v['p'+i]||''}"></td></tr>`).join('')}</table><p><button class="btn g" onclick="lkc()">Periksa tabel</button> <span id="lm"></span></p>${ta('a1','3. Analisis: apa yang terjadi pada tekanan ketika kedalaman dua kali lipat?')}${ta('a2','4. Jika airnya air laut (1025 kg/m³), apakah tekanan lebih besar atau lebih kecil? Mengapa?')}${ta('a3','5. Kaitkan dengan akar mangrove yang terendam saat air pasang.')}${ta('k','6. Kesimpulan',3)}<p><button class="btn" onclick="lks(0)">Simpan draf</button> <button class="btn g" onclick="lks(1)">Kumpulkan LKPD</button></p><p id="ls"></p>`}
+function lkv(){const o={};['d','a1','a2','a3','k'].forEach(i=>o[i]=$(i).value);for(let i=0;i<5;i++)o['p'+i]=$('p'+i).value;return o}
+function lkc(){let n=0;[.5,1,1.5,2,2.5].forEach((h,i)=>{const e=$('p'+i),x=parseFloat(e.value.replace(/\./g,'').replace(',','.'));const ok=Math.abs(x-10000*h)<1;e.className='n '+(ok?'ok':'no');if(ok)n++});$('lm').textContent=n+' dari 5 benar';if(n==5)add('lkc',15)}
+function lks(f){const o=lkv();store.set('fk_lk',JSON.stringify(o));if(!f){$('ls').textContent='Draf tersimpan di browser ini.';return}
+if(!o.d.trim()||!o.a1.trim()||!o.a2.trim()||!o.a3.trim()||!o.k.trim()){$('ls').textContent='Lengkapi dugaan awal, analisis, dan kesimpulan dulu.';return}
+lkc();add('lkpd',25);autoSub('t1','LKPD tekanan hidrostatis.\nDugaan awal: '+o.d+'\nKesimpulan: '+o.k);$('ls').textContent='✅ LKPD ditandai terkumpul. Karena belum ada server, file tidak dikirim ke guru sungguhan; tunjukkan layar ini atau salin jawabanmu.'}
+/* ---------- LMS tugas (seperti LMS_4) ---------- */
+const J=(k,d)=>{try{return JSON.parse(store.get(k))||d}catch(e){return d}},esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let role='siswa',cls='';
+const saveT=t=>store.set('fk_tasks',JSON.stringify(t)),SB=()=>J('fk_subs',[]),saveS=s=>store.set('fk_subs',JSON.stringify(s)),fmt=x=>x?new Date(x).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'}):'Tanpa tenggat';
+function TK(){let t=J('fk_tasks',null);if(!t){const d=n=>new Date(Date.now()+n*864e5).toISOString();t=[{id:'t1',title:'LKPD Tekanan Hidrostatis',topic:'Fluida statis',desc:'Isi LKPD di menu LKPD: dugaan awal, tabel P = ρgh, analisis, dan kesimpulan. Mengumpulkan LKPD di sana otomatis tercatat di sini.',due:d(3),active:1},{id:'t2',title:'Laporan Simulasi Gaya Apung',topic:'Gaya apung',desc:'Jalankan Lab 2, lalu tulis massa jenis benda yang terapung, melayang, dan tenggelam beserta alasannya.',due:d(5),active:1},{id:'t3',title:'Esai: Akar Mangrove dan Gelombang',topic:'Gelombang',desc:'Jelaskan dalam 5 sampai 8 kalimat bagaimana akar mangrove meredam gelombang, gunakan hasil Lab 3.',due:d(7),active:1},{id:'tq',title:'Kuis 15 Soal (dinilai otomatis)',topic:'Semua materi',desc:'Kerjakan di menu Kuis. Skor 1 sampai 100 otomatis masuk ke Nilai Saya.',due:d(7),active:1}];saveT(t)}return t}
+const tn=id=>(TK().find(t=>t.id==id)||{}).title||'Tugas',mine=()=>SB().filter(s=>s.who==name);
+function autoSub(id,text,grade,fb){if(role=='guru')return;const s=SB().filter(x=>!(x.task==id&&x.who==name&&x.auto));s.push({id:'s'+Date.now(),task:id,who:name,cls,text,file:'',ts:Date.now(),grade:grade==null?null:grade,fb:fb||'',auto:1});saveS(s);lmsRef()}
+function pilih(id){$('ts').value=id;go('kumpul')}
+function lmsRef(){const T=TK(),t=T.filter(x=>x.active),m=mine().slice().reverse(),A=SB().slice().reverse();
+$('stA').textContent=t.length;$('stS').textContent=m.length;$('stG').textContent=m.filter(s=>s.grade!=null).length;
+const cur=$('ts').value;$('ts').innerHTML='<option value="">Pilih tugas...</option>'+t.map(x=>`<option value="${x.id}">${esc(x.title)}</option>`).join('');$('ts').value=cur;
+$('tl').innerHTML=t.map(x=>`<div class="item"><span class="tag">${esc(x.topic||'Fisika')}</span><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p><p>Tenggat: ${fmt(x.due)}</p><button class="btn g" onclick="pilih('${x.id}')">Kumpulkan tugas ini</button></div>`).join('')||'<div class="item">Belum ada tugas diterbitkan.</div>';
+$('rl').innerHTML=m.map(s=>`<div class="item"><div class="row"><b>${esc(tn(s.task))}</b><span class="tag">${s.grade==null?'Terkumpul':'Sudah dinilai'}</span></div><p>${fmt(s.ts)}</p><p>${esc(s.text||'Jawaban dalam file')}${s.file?'<br>📎 '+esc(s.file):''}</p></div>`).join('')||'<div class="item">Belum ada pengumpulan.</div>';
+$('nl').innerHTML=m.map(s=>`<div class="item"><h3>${esc(tn(s.task))}</h3><p>Nilai: <b>${s.grade==null?'Belum dinilai':s.grade+'/100'}</b></p><p>Catatan guru: ${esc(s.fb||'Belum ada')}</p></div>`).join('')||'<div class="item">Belum ada nilai.</div>';
+$('gl').innerHTML=A.map(x=>`<div class="item"><div class="row"><b>${esc(x.who)} · ${esc(x.cls||'-')}</b><span class="tag">${x.grade==null?'Belum dinilai':x.grade+'/100'}</span></div><p><b>${esc(tn(x.task))}</b> · ${fmt(x.ts)}</p><p>${esc(x.text||'(tanpa teks)')}${x.file?'<br>📎 '+esc(x.file):''}</p><input class="fi" id="g${x.id}" type="number" min="0" max="100" placeholder="Nilai 0-100" value="${x.grade==null?'':x.grade}"><input class="fi" id="f${x.id}" placeholder="Umpan balik" value="${esc(x.fb)}"><button class="btn" onclick="nilai('${x.id}')">Simpan nilai</button></div>`).join('')||'<div class="item">Belum ada pengumpulan siswa di browser ini.</div>';
+$('ml').innerHTML=T.map(x=>`<div class="item"><div class="row"><b>${esc(x.title)}</b><span class="tag">${x.active?'Terbit':'Disembunyikan'}</span></div><p>${esc(x.topic)} · ${fmt(x.due)}</p><button class="btn g" onclick="tgl('${x.id}')">${x.active?'Sembunyikan':'Terbitkan'}</button> <button class="btn" onclick="hps('${x.id}')">Hapus</button></div>`).join('')}
+function nilai(id){const s=SB(),x=s.find(y=>y.id==id),g=parseFloat($('g'+id).value);if(isNaN(g)||g<0||g>100){$('gst').textContent='Nilai harus 0 sampai 100.';return}x.grade=g;x.fb=$('f'+id).value;saveS(s);$('gst').textContent='✅ Nilai tersimpan.';lmsRef()}
+function tgl(id){const T=TK(),x=T.find(y=>y.id==id);x.active=x.active?0:1;saveT(T);lmsRef()}
+function hps(id){saveT(TK().filter(y=>y.id!=id));lmsRef()}
+$('tsend').onclick=()=>{const id=$('ts').value,f=$('tf').files[0],a=$('tx').value.trim();if(!id||(!f&&!a)){$('tst').textContent='Pilih tugas, lalu isi jawaban atau pilih file.';return}if(f&&f.size>10485760){$('tst').textContent='File lebih dari 10 MB.';return}
+const s=SB();s.push({id:'s'+Date.now(),task:id,who:name,cls,text:a,file:f?f.name:'',ts:Date.now(),grade:null,fb:''});saveS(s);$('tx').value='';$('tf').value='';$('tst').textContent='✅ Tugas terkumpul. Lihat di Riwayat Saya.';add('sub',10);lmsRef()};
+$('ct').onclick=()=>{const t=$('nt').value.trim();if(!t){$('cst').textContent='Isi judul tugas.';return}const T=TK(),d=$('nd').value;T.unshift({id:'t'+Date.now(),title:t,topic:$('np').value.trim()||'Fisika',desc:$('ns').value.trim(),due:d?new Date(d).toISOString():'',active:1});saveT(T);['nt','np','ns','nd'].forEach(i=>$(i).value='');$('cst').textContent='✅ Tugas diterbitkan.';lmsRef()};
+/* ---------- mulai ---------- */
+$('go').onclick=()=>{const n=$('nm').value.trim();if(!n){$('nm').focus();return}name=n;cls=$('gc').value.trim();role=$('gr').value;store.set('fk_name',n);store.set('fk_cls',cls);document.body.classList.toggle('guru',role=='guru');$('gate').style.display='none';$('who').textContent='👤 '+n;$('hi').innerHTML=('Halo '+n.split(' ')[0]+', ayo jelajah mangrove!').split(' ').map(w=>`<span>${w}</span>`).join(' ');S.music();$('who').textContent+=' · '+(role=='guru'?'Guru':'Siswa');go('home');ref()};
+$('nm').value=store.get('fk_name')||'';$('gc').value=store.get('fk_cls')||'';mat(0);done={};xp=0;ref();lmsRef();
+</script></body></html>
